@@ -18,10 +18,12 @@ class _TabsBoxState extends State<TabsBox> {
 
   @override
   void initState() {
-    screens.add(const HomeScreen());
-    screens.add(const FavoritesScreen());
-    screens.add(const CartScreen());
-    screens.add(const NotificationScreen());
+    screens = [
+      const HomeScreen(),
+      const FavoritesScreen(),
+      const CartScreen(),
+      const NotificationScreen(),
+    ];
     super.initState();
   }
 
@@ -29,22 +31,22 @@ class _TabsBoxState extends State<TabsBox> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
-        index: context.read<TabsBoxCubit>().state,
+        index: context.watch<TabsBoxCubit>().state,
         children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) => context.read<TabsBoxCubit>().setIndex(index),
-        currentIndex: context.read<TabsBoxCubit>().state,
         selectedItemColor: const Color(0xFFC67C4E),
+        showSelectedLabels: false,
         unselectedItemColor: const Color(0xFF8D8D8D),
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
+        showUnselectedLabels: false,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite),label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag),label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications),label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: ""),
         ],
+        currentIndex: context.watch<TabsBoxCubit>().state,
+        onTap: context.read<TabsBoxCubit>().setIndex,
       ),
     );
   }
