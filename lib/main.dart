@@ -1,5 +1,5 @@
 import 'package:example/cubit/tabs_box_cubit.dart';
-import 'package:example/ui/first/first_screen.dart';
+import 'package:example/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: FirstScreen(),
+        home: SplashScreen(),
       ),
     );
   }
